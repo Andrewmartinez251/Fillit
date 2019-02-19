@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfielder <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andrmart <andrmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 17:57:59 by gfielder          #+#    #+#             */
-/*   Updated: 2019/02/17 23:45:52 by gfielder         ###   ########.fr       */
+/*   Updated: 2019/02/18 20:19:55 by andrmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	print_tet_listing(int i);
 void	cmd_help(void);
 void	cmd_overlaps(int i, int j);
 void	cmd_rf(char *filename);
+void    cmd_next_pos(int i);
 void	cmd_overlaps_all(void);
 void	cmd_move(int index, int x, int y);
 void	cmd_del(int index);

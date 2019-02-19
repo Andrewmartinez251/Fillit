@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_cli.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfielder <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andrmart <andrmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 17:04:32 by gfielder          #+#    #+#             */
-/*   Updated: 2019/02/18 00:25:45 by gfielder         ###   ########.fr       */
+/*   Updated: 2019/02/18 20:59:56 by andrmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ int		process_cmd(char **words)
 			printf("%s ", words[i]);
 		printf("\n");
 	}
+	else if (ft_strnequ(words[0], "next_pos", 8))
+		cmd_next_pos(idx_atoi(words[1]));
 	else
 		printf("Unrecognized command. See 'help' / '?'.\n");
 	return (1);
@@ -231,10 +233,10 @@ void	cmd_rf(char *filename)
 
 void	cmd_solve(void)
 {
-	printf("Solving is currently disabled.\n");
-	return ;
+	//printf("Solving is currently disabled.\n");
+	//return ;
 
-	unsigned short result = backtracking(g_tets, 0, init_pos(), grid_size);
+	unsigned short result = backtracking(g_tets, 0, init_pos(), &grid_size);
 	if (result == 1)
 		printf("Success\n");
 	else
@@ -369,6 +371,11 @@ void	cmd_show(int i)
 	}
 	print_shape(g_shapes[g_tets[i] & TET_ID_MASK]);
 	print_tet_listing(i);
+}
+
+void	cmd_next_pos(int i)
+{
+	i++;
 }
 
 void	print_tet_listing(int i)

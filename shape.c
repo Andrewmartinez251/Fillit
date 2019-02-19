@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   shape.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gfielder <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: andrmart <andrmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/16 13:50:13 by gfielder          #+#    #+#             */
-/*   Updated: 2019/02/17 17:50:16 by gfielder         ###   ########.fr       */
+/*   Updated: 2019/02/18 21:15:03 by andrmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shape.h"
 #include "tetrimino.h"
+#include "testing.h"
 #include <stddef.h>
 
 const unsigned short g_shapes[19] = {
@@ -61,13 +62,19 @@ unsigned short		overlaps(unsigned short tet1, unsigned short tet2)
 	{
 		tet1_shape = horiz_shift(tet1_shape, tet1_dim - tet2_dim);
 		if (!tet1_shape)
+		{
+			// puts("exit_overlaps 66");
 			return (0);
+		}
 	}
 	else
 	{
 		tet2_shape = horiz_shift(tet2_shape, tet2_dim - tet1_dim);
 		if (!tet2_shape)
+		{
+			// puts("exit_overlaps 75");
 			return (0);
+		}
 	}
 	tet1_dim = TET_GET_Y(tet1);
 	tet2_dim = TET_GET_Y(tet2);
@@ -75,6 +82,7 @@ unsigned short		overlaps(unsigned short tet1, unsigned short tet2)
 		tet1_shape = vert_shift(tet1_shape, tet1_dim - tet2_dim);
 	else
 		tet2_shape = vert_shift(tet2_shape, tet2_dim - tet1_dim);
+	// puts("exit_overlaps 85");
 	return (tet1_shape & tet2_shape);
 }
 

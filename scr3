@@ -1,0 +1,12 @@
+rf example.txt
+show a
+show b
+show c
+show d
+solve
+inb a
+inb b
+inb c
+inb d
+overlaps all
+p
