@@ -16,9 +16,10 @@
 # define X pos[0]
 # define Y pos[1]
 
-int                 *init_pos(void);
+void                 init_pos(int pos[2]);
 int                 *pos(int pos[2], unsigned short grid_size);
+unsigned short		increase_grid(unsigned short *arr, unsigned short grid_size);
 unsigned short      validate(unsigned short arr[26], int n/*, int pos[2]*/);
-unsigned short      backtracking(unsigned short arr[26], int n, int pos[2], unsigned short *grid_size);
+unsigned short      backtracking(unsigned short *arr, int n, int pos[2], unsigned short grid_size);
 
 #endif

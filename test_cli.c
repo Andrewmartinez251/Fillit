@@ -45,7 +45,7 @@ int		main(int argc, char **argv)
 	}
 	while (process_stdin());
 	return (0);
-} 
+}
 
 void	cmd_help()
 {
@@ -236,8 +236,8 @@ void	cmd_solve(void)
 	//printf("Solving is currently disabled.\n");
 	//return ;
 
-	unsigned short result = backtracking(g_tets, 0, init_pos(), &grid_size);
-	if (result == 1)
+	grid_size = increase_grid(g_tets, grid_size);
+	if (grid_size == 1)
 		printf("Success\n");
 	else
 		printf("Error while solving.\n");
