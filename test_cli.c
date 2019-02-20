@@ -6,7 +6,7 @@
 /*   By: andrmart <andrmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/17 17:04:32 by gfielder          #+#    #+#             */
-/*   Updated: 2019/02/18 20:59:56 by andrmart         ###   ########.fr       */
+/*   Updated: 2019/02/19 16:12:45 by andrmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,7 @@ void	cmd_solve(void)
 	//return ;
 
 	grid_size = increase_grid(g_tets, grid_size);
-	if (grid_size == 1)
+	if (grid_size)
 		printf("Success\n");
 	else
 		printf("Error while solving.\n");

@@ -17,87 +17,83 @@
 #include "shape.h"
 #include "tetrimino.h"
 
-void                init_pos(int pos[2])
-{
-    pos[0] = -1;
-    pos[1] = -1;
-}
+// void                init_pos(int pos[2])
+// {
+//     pos[0] = -1;
+//     pos[1] = -1;
+// }
 
-int                 next_pos(unsigned short tet, int pos[2], unsigned short grid_size) // update the position, consider logical assumptions with regard to id, return NULL if a greater grid_size is needed
-{
-    if (X < 0 || Y < 0)
-    {
-        init_pos(pos);
-        return (1);
-    }
-    set_pos(&tet, ++X, Y);
-    if (!(in_x_bounds(tet, grid_size)))
-    {
-        X = 0;
-        // puts("happy y");
-        set_pos(&tet, 0, ++Y);
-        printf("move y");
-    }
-    else
-        printf("move x");
-    if (!(in_y_bounds(tet, grid_size)))
-    {
-        puts("\n\n-------- NG --------\n\n");
-        return (0);
-    }
-    puts(" 45");
-    return (1);
-}
+// int                 next_pos(unsigned short tet, int pos[2], unsigned short grid_size) // update the position, consider logical assumptions with regard to id, return NULL if a greater grid_size is needed
+// {
+//     if (X < 0 || Y < 0)
+//     {
+//         init_pos(pos);
+//         return (1);
+//     }
+//     set_pos(&tet, ++X, Y);
+//     if (!(in_x_bounds(tet, grid_size)))
+//     {
+//         X = 0;
+//         // puts("happy y");
+//         set_pos(&tet, 0, ++Y);
+//         printf("move y");
+//     }
+//     else
+//         printf("move x");
+//     if (!(in_y_bounds(tet, grid_size)))
+//     {
+//         puts("\n\n-------- NG --------\n\n");
+//         return (0);
+//     }
+//     puts(" 45");
+//     return (1);
+// }
 
-int                 is_next_pos(unsigned short tet, int pos[2], unsigned short grid_size) // update the position, consider logical assumptions with regard to id, return NULL if a greater grid_size is needed
-{
-    unsigned short tmp;
+// int                 is_next_pos(unsigned short tet, int pos[2], unsigned short grid_size) // update the position, consider logical assumptions with regard to id, return NULL if a greater grid_size is needed
+// {
+//     unsigned short tmp;
 
-    tmp = tet;
-    set_pos(&tmp, ++X, Y);
-    if (!(in_x_bounds(tmp, grid_size)))
-    {
-        X = 0;
-        set_pos(&tmp, 0, ++Y);
-    }
-    if (!(in_y_bounds(tmp, grid_size)))
-    {
-        puts("return 42");
-        return (0);
-    }
-    puts("return 45");
-    return (1);
-}
+//     tmp = tet;
+//     set_pos(&tmp, ++X, Y);
+//     if (!(in_x_bounds(tmp, grid_size)))
+//     {
+//         X = 0;
+//         set_pos(&tmp, 0, ++Y);
+//     }
+//     if (!(in_y_bounds(tmp, grid_size)))
+//     {
+//         puts("return 42");
+//         return (0);
+//     }
+//     puts("return 45");
+//     return (1);
+// }
 
-unsigned short      validate(unsigned short arr[26], int n)
-{
-    int i;
-    unsigned short i_temp;
-    unsigned short n_temp;
+// unsigned short      validate(unsigned short arr[26], int n)
+// {
+//     int i;
+//     unsigned short i_temp;
+//     unsigned short n_temp;
 
-	i = -1;
-    while (++i < n)
-    {
-        i_temp = arr[i];
-        n_temp = arr[n];
-        if (overlaps(i_temp, n_temp))
-            return (0);
-    }
-    puts("exit validate()");
-    return (1);
-}
+// 	i = -1;
+//     while (++i < n)
+//     {
+//         i_temp = arr[i];
+//         n_temp = arr[n];
+//         if (overlaps(i_temp, n_temp))
+//             return (0);
+//     }
+//     puts("exit validate()");
+//     return (1);
+// }
 
-void                pos_of(unsigned short *arr, int n, int pos[2])
-{
-    pos[0] = TET_GET_X(arr[n]);
-    pos[1] = TET_GET_Y(arr[n]);
-}
 
-void        infer_next_pos(unsigned short *arr, int n, int pos[2], int grid_size)
-{
-    pos_of(arr, n, pos);
-    next_pos(arr[n], pos, grid_size);
-}
+
+// void        infer_next_pos(unsigned short *arr, int n, int pos[2], int grid_size)
+// {
+//     pos_of(arr, n, pos);
+//     next_pos(arr[n], pos, grid_size);
+// }
 // unsigned short      backtracking(unsigned short *arr, int n, int pos[2], unsigned short *grid_size) // n is zero based
 // {
 //     // cmd_show(n);
@@ -144,23 +140,23 @@ void        infer_next_pos(unsigned short *arr, int n, int pos[2], int grid_size
 // 5) If there are remaining places to go, choose one and goto #3.
 // 6) Out of places to go.  Return false.
 
-int                *reset_pos(int pos[2])
-{
-    init_pos(pos);
-    return (pos);
-}
+// int                *reset_pos(int pos[2])
+// {
+//     init_pos(pos);
+//     return (pos);
+// }
 
-unsigned short     increase_grid(unsigned short *arr, unsigned short grid_size)
-{
-    int pos[2];
+// unsigned short     increase_grid(unsigned short *arr, unsigned short grid_size)
+// {
+//     int pos[2];
 
-    init_pos(pos);
-    if (grid_size > 8)
-        return (0);
-    if (backtracking(arr, 0, pos, grid_size))
-        return (grid_size);
-    return (increase_grid(arr, ++grid_size));
-}
+//     init_pos(pos);
+//     if (grid_size > 8)
+//         return (0);
+//     if (backtracking(arr, 0, pos, grid_size))
+//         return (grid_size);
+//     return (increase_grid(arr, ++grid_size));
+// }
 
 // unsigned short     backtracking(unsigned short *arr, int n, int pos[2], unsigned short grid_size)
 // {
@@ -192,18 +188,148 @@ unsigned short     increase_grid(unsigned short *arr, unsigned short grid_size)
 //     return (0);
 // }
 
+// void                pos_of(unsigned short *arr, int n, int pos[2])
+// {
+//     pos[0] = TET_GET_X(arr[n]);
+//     pos[1] = TET_GET_Y(arr[n]);
+// }
+
+// void        infer_next_pos(unsigned short *arr, int n, int pos[2], int grid_size)
+// {
+//     pos_of(arr, n, pos);
+//     next_pos(arr[n], pos, grid_size);
+// }
+
+// unsigned short      validate(unsigned short arr[26], int n)
+// {
+//     int i;
+//     unsigned short i_temp;
+//     unsigned short n_temp;
+
+// 	i = -1;
+//     while (++i < n)
+//     {
+//         i_temp = arr[i];
+//         n_temp = arr[n];
+//         if (overlaps(i_temp, n_temp))
+//             return (0);
+//     }
+//     puts("exit validate()");
+//     return (1);
+// }
+
+// int                 next_pos(unsigned short tet, int pos[2], unsigned short grid_size) // update the position, consider logical assumptions with regard to id, return NULL if a greater grid_size is needed
+// {
+//     if (X < 0 || Y < 0)
+//     {
+//         init_pos(pos);
+//         return (1);
+//     }
+//     set_pos(&tet, ++X, Y);
+//     if (!(in_x_bounds(tet, grid_size)))
+//     {
+//         X = 0;
+//         // puts("happy y");
+//         set_pos(&tet, 0, ++Y);
+//         printf("move y");
+//     }
+//     else
+//         printf("move x");
+//     if (!(in_y_bounds(tet, grid_size)))
+//     {
+//         puts("\n\n-------- NG --------\n\n");
+//         return (0);
+//     }
+//     puts(" 45");
+//     return (1);
+// }
+
+
+unsigned short      validate(unsigned short arr[26], int n)
+{
+    int i;
+    unsigned short i_temp;
+    unsigned short n_temp;
+
+	i = -1;
+    while (++i < n)
+    {
+        i_temp = arr[i];
+        n_temp = arr[n];
+        if (overlaps(i_temp, n_temp))
+            return (0);
+    }
+    puts("exit validate()");
+    return (1);
+}
+
+
+void                pos_of(unsigned short *arr, int n, int pos[2])
+{
+    pos[0] = TET_GET_X(arr[n]);
+    pos[1] = TET_GET_Y(arr[n]);
+}
+
+int                 next_pos(unsigned short *arr, int n, int pos[2], unsigned short grid_size)
+{
+    if (X == -1)
+    {
+        set_ipos(pos, 0, 0);
+        set_pos(&arr[n], X, Y);
+        puts("return 276");
+        if (!in_x_bounds(arr[n], grid_size) || !in_y_bounds(arr[n], grid_size))
+            return (0);
+        return (1); // there is a next pos
+    }
+    pos_of(arr, n, pos);
+    set_ipos(pos, ++X, Y);
+    set_pos(&arr[n], X, Y);
+    if (!in_x_bounds(arr[n], grid_size)) 
+    {
+        set_ipos(pos, 0, ++Y);
+        set_pos(&arr[n], X, Y);
+    }
+    if (!in_y_bounds(arr[n], grid_size))
+    {
+        puts("return 287");
+        return (0);
+    }
+    puts("return 291");
+    return (1);
+}
+
+int                *set_ipos(int pos[2], int x, int y)
+{
+    pos[0] = x;
+    pos[1] = y;
+    return (pos);
+}
+
+unsigned short     increase_grid(unsigned short *arr, unsigned short grid_size)
+{
+    int pos[2];
+
+    if (grid_size > 32)
+        return (0);
+    if (backtracking(arr, 0, set_ipos(pos, -1, -1), grid_size))
+        return (grid_size);
+    puts("88888888888888888");
+    return (increase_grid(arr, grid_size + 1));
+}
+
 unsigned short       backtracking(unsigned short *arr, int n, int pos[2], unsigned short grid_size)
 {
     if (!arr[n])
        return (1);
-    while (next_pos(arr[n], pos, grid_size))
+    while (next_pos(arr, n, pos, grid_size))
     {
-        set_pos(&arr[n], X, Y);
+        printf("stuck at n = %d , x %d y %d grid %d lol", n, X, Y, grid_size);
         if (validate(arr, n))
         {
-            if (backtracking(arr, n + 1, reset_pos(pos), grid_size))
+            if (backtracking(arr, n + 1, set_ipos(pos, -1, -1), grid_size))
                 return (1);
         }
     }
+    puts("---------------------------------------------------------------------");
     return (0);
 }
